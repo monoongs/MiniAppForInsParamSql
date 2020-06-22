@@ -26,7 +26,9 @@ function step2(lastNum) {
 
 function step3(resultQuery) {
   document.getElementById('step3').innerHTML = ""
-  
+  // coptyToClipboard(resultQuery)
+  resultQuery += '<br/> <br/> <a href="https://sqlformat.org/" target="_blank">Beautify code online.</a>'
+
   let child = document.createElement('div')
   child.innerHTML = resultQuery
   document.getElementById('step3').appendChild(child);
@@ -108,3 +110,8 @@ function replaceVar(arrVar, lastNum) {
   return newQuery
 
 }
+
+// function coptyToClipboard(resultQuery) {
+//   // resultQuery.select()
+//   // return document.execCommand("copy")
+// }
