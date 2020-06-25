@@ -4,24 +4,84 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tools For Help Insert Param</title>
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <script src="bootstrap/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="src/sql-formatter.min.js"></script>
   <script src="index.js"></script>
+  
 </head>
 <body>
-  <p>Step 1</p>
-    <p>Insert Query</p>
-    <textarea name="query" id="query" cols="150" rows="10" onfocus="this.value=''">
-      select :1 from :2 where :3 and :4
-    </textarea>
-    <br>
-    <button onclick="step1()" >Create Input Box</button>
-
-  <p>Step 2</p>
-    <div id="step2">
-      
+  <div class="container" style="margin-bottom: 15px;">
+    <div class="row">
+      <h2>Tools For Help Insert Param</h2>
     </div>
-  <p>Step 3</p>
+    <div class="row">
+      <div class="col-md-6">
+        <p>Insert Query</p>
+        <textarea class="form" name="query" id="query" rows="10" style="width: 100%">
+          select :1 from :2 where :3 and :4
+        </textarea>
+        <br>
+        <button class="btn btn-primary btn-block" onclick="step1()" >Create Input Box</button>
+
+        <!-- <p>Step 2</p> -->
+          <div id="step2" style="
+          margin-top: 20px;
+          display: flex;
+          flex-direction: column;"
+          >
+            
+          </div>
+        </div>
+      <div class="col-md-6">
+        <section class="output" style="height: 100%">
+          <p>Result :</p>
+          <textarea id="output" readonly="true" wrap="off" rows="20" style="width: 100%; height: 90%"></textarea>
+        </section>
+      </div>
+    </div>
+  </div>
+  
+  <div class="contaner" style="text-align: center;">
+    <div class="row">
+      <div class="col-md-12">
+        <p>Version 2.0.0 @
+          <a href="https://github.com/monoongs/MiniAppForInsParamSql" target="_blank">Github</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- <p>Step 3</p> -->
     <div id="step3" style="color:red">
         
     </div>
+  
+    <!-- <div class="" style="bottom: 0; right: 0;position: absolute;">
+      <p>Ver 0.1.0 <a href="https://github.com/monoongs/MiniAppForInsParamSql" target="_blank">Github</a></p>
+      
+    </div> -->
+
+   
 </body>
+<!-- 
+<script>
+   (function() {
+            let language = document.getElementById('language');
+            let input = document.getElementById('input');
+            let output = document.getElementById('output');
+
+         
+
+           
+                // console.time('formatting');
+
+                output.value = sqlFormatter.format("SELECT * FROM table1")
+
+                // console.timeEnd('formatting');
+
+
+        })();
+</script> -->
+
 </html>

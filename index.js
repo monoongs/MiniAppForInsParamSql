@@ -1,5 +1,7 @@
 var tempArr = []
 
+console.log(sqlFormatter.format("SELECT * FROM table1"));
+
 function step1() {
 
   if(!document.getElementById('query').value){
@@ -27,12 +29,27 @@ function step2(lastNum) {
 function step3(resultQuery) {
   document.getElementById('step3').innerHTML = ""
   // coptyToClipboard(resultQuery)
-  resultQuery += '<br/> <br/> <a href="https://sqlformat.org/" target="_blank">Beautify code online.</a>'
+  // resultQuery += '<br/> <br/> <a href="https://sqlformat.org/" target="_blank">Beautify code online.</a>'
 
-  let child = document.createElement('div')
-  child.innerHTML = resultQuery
-  document.getElementById('step3').appendChild(child);
+  console.log(typeof(resultQuery))
+  console.log(typeof(sqlFormatter.format(resultQuery)))
 
+  resultQuery = sqlFormatter.format(resultQuery)
+
+  console.log(resultQuery)
+  
+  // let child = document.createElement('div')
+  // child.innerHTML = resultQuery
+  // document.getElementById('step3').appendChild(child);
+
+  //
+  let output = document.getElementById('output');
+
+  output.value = resultQuery
+
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+  //
   console.log(tempArr)
 }
 
@@ -43,11 +60,16 @@ function countVar(query) {
 
 function createInput(numOfVar) {
   console.log(numOfVar)
-  var str = "";
+  var str = "<p>Insert Parameter</p>";
+  var space = '&nbsp;&nbsp;'
   for(let i = 1; i <= numOfVar; i+=1) {
-    str += ''+i+'. <input type="text" name="v'+i+'" /><br>'
+    if(i>=10) {
+      space = ''
+    }
+    str += '<div style="display: flex; margin-bottom: 10px;">'+i+'.'+space+'&nbsp; <input style="width:100%" class="" type="text" name="v'+i+'" /></div>'
+   
     if(i == numOfVar) {
-      str += '<br><button onclick="step2('+i+')">Make Result</button>'
+      str += '<br><button class="btn btn-danger btn-block" onclick="step2('+i+')">Make Result</button>'
     }
   }
   
@@ -109,6 +131,11 @@ function replaceVar(arrVar, lastNum) {
 
   return newQuery
 
+}
+
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
 }
 
 // function coptyToClipboard(resultQuery) {
