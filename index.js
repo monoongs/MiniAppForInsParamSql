@@ -11,9 +11,22 @@ function step1() {
   let query = document.getElementById('query').value
   console.log(query)
   let numOfVar = countVar(query)
-  document.getElementById('step2').innerHTML = ""
-  createInput(numOfVar)
+
+  if(numOfVar) {
+    document.getElementById('step2').innerHTML = ""
+    createInput(numOfVar)
+
+    if(document.getElementById('btn-format')){
+      document.getElementById('btn-format').remove()
+    }  
+  } else {
+    alert('No variable in query')
+  }
+
 }
+
+
+
 
 function step2(lastNum) {
   let arrVar = createArray(lastNum)
@@ -54,13 +67,18 @@ function step3(resultQuery) {
 }
 
 function countVar(query) {
-  let number = query.match(/:/g).length
-  return number
+  try {
+    let number = query.match(/:/g).length
+    return number
+  } catch (error) {
+    return null
+  }
+  
 }
 
 function createInput(numOfVar) {
   console.log(numOfVar)
-  var str = "<p>Insert Parameter</p>";
+  var str = "";
   var space = '&nbsp;&nbsp;'
   for(let i = 1; i <= numOfVar; i+=1) {
     if(i>=10) {
@@ -69,7 +87,7 @@ function createInput(numOfVar) {
     str += '<div style="display: flex; margin-bottom: 10px;">'+i+'.'+space+'&nbsp; <input style="width:100%" class="" type="text" name="v'+i+'" /></div>'
    
     if(i == numOfVar) {
-      str += '<br><button class="btn btn-danger btn-block" onclick="step2('+i+')">Make Result</button>'
+      str += '<br><button class="btn btn-danger btn-block" onclick="step2('+i+')">Make Result Or Format Only</button>'
     }
   }
   
@@ -142,3 +160,14 @@ function topFunction() {
 //   // resultQuery.select()
 //   // return document.execCommand("copy")
 // }
+
+function formatOnly() {
+  let query = document.getElementById('query').value
+  resultQuery = sqlFormatter.format(query)
+
+  console.log(resultQuery)
+
+  let output = document.getElementById('output');
+
+  output.value = resultQuery
+}

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tools For Help Insert Param</title>
+  <title>Tools For Help Insert Value to Param or Formatter your query</title>
   <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
   <script src="bootstrap/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="src/sql-formatter.min.js"></script>
@@ -11,9 +11,11 @@
   
 </head>
 <body>
-  <div class="container" style="margin-bottom: 15px;">
+  <div class="container" style="margin-top:20px; margin-bottom:15px;">
     <div class="row">
-      <h2>Tools For Help Insert Param</h2>
+      <div class="col-md-12" style="margin-bottom: 20px;">
+        <h2 style="text-align:center">InsertHelper & SQL Formatter</h2>
+      </div>
     </div>
     <div class="row">
       <div class="col-md-6">
@@ -22,7 +24,11 @@
           select :1 from :2 where :3 and :4
         </textarea>
         <br>
-        <button class="btn btn-primary btn-block" onclick="step1()" >Create Input Box</button>
+        <span>
+          <p></p>
+        </span>
+        <button class="btn btn-primary btn-block" onclick="step1()" >Insert Value</button>
+        <button id="btn-format" class="btn btn-danger btn-block" onclick="formatOnly()" >Formatter</button>
 
         <!-- <p>Step 2</p> -->
           <div id="step2" style="
@@ -45,43 +51,19 @@
   <div class="contaner" style="text-align: center;">
     <div class="row">
       <div class="col-md-12">
-        <p>Version 2.0.0 @
+        <p>Version 2.1.1 @
           <a href="https://github.com/monoongs/MiniAppForInsParamSql" target="_blank">Github</a>
         </p>
       </div>
     </div>
   </div>
-
-  <!-- <p>Step 3</p> -->
-    <div id="step3" style="color:red">
+  <div id="step3" style="color:red">
         
-    </div>
-  
-    <!-- <div class="" style="bottom: 0; right: 0;position: absolute;">
-      <p>Ver 0.1.0 <a href="https://github.com/monoongs/MiniAppForInsParamSql" target="_blank">Github</a></p>
-      
-    </div> -->
-
-   
+  </div>   
 </body>
-<!-- 
-<script>
-   (function() {
-            let language = document.getElementById('language');
-            let input = document.getElementById('input');
-            let output = document.getElementById('output');
-
-         
-
-           
-                // console.time('formatting');
-
-                output.value = sqlFormatter.format("SELECT * FROM table1")
-
-                // console.timeEnd('formatting');
-
-
-        })();
-</script> -->
-
+  <!-- VERSION LOG -->
+  <!-- 1.0 Launch -->
+  <!-- 2.0 Add the Bootstrap, mak sql formatter -->
+  <!-- 2.1 Make Formatter no requrire parameter -->
+  <!-- 2.1.1 Add more style -->
 </html>
